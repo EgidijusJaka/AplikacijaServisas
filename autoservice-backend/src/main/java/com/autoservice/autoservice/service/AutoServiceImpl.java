@@ -43,5 +43,10 @@ public class AutoServiceImpl implements AutoServiceService{
         return repository.save(autoservice);
     }
 
+    @Override
+    public List<AutoService> getAllAutoServices() {
+        return null;
+    }
+
 
 }
