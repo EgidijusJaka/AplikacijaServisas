@@ -1,11 +1,33 @@
 package com.autoservice.autoservice.model;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.util.Objects;
+
+
+@Entity
+@Table(name = "users")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+    @Column(name = "username", nullable = false)
     private String username;
+    @Column(name= "password", nullable = false)
+    private String password;
+    @Column(name="is_admin" , nullable = false, columnDefinition = "BOOLEAN")
+    private boolean isAdmin;
+
+    public User() {
+        super();
+    }
+
+    public User(String username, String password, boolean isAdmin) {
+        super();
+        this.username = username;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
 
     public Integer getUserId() {
         return userId;
@@ -35,10 +57,34 @@ public class User {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
     }
 
-    private String password;
-    private boolean isAdmin;
+    @Override
+    public int hashCode() {
+        return Objects.hash(isAdmin, password, userId, username);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        User other = (User) obj;
+        return isAdmin == other.isAdmin && Objects.equals(password, other.password)
+                && Objects.equals(userId, other.userId) && Objects.equals(username, other.username);
+    }
+
+    @Override
+    public String toString() {
+        return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", isAdmin=" + isAdmin
+                + "]";
+    }
+
+
+
 }
