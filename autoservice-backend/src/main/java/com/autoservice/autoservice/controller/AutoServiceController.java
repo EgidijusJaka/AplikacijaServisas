@@ -10,9 +10,9 @@ import java.util.Optional;
 public class AutoServiceController {
     @Autowired
     AutoServiceService service;
-    @GetMapping("/getautoservice")
-    public List<AutoService> getAllAutoService(){
-        return service.getAllAutoService();
+    @GetMapping("/getautoservices")
+    public List<AutoService> getAllAutoServices(){
+        return service.getAllAutoServices();
 
     }
     @GetMapping("/getautoservice/{id}")

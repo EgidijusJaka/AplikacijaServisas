@@ -16,4 +16,5 @@ public interface AutoServiceService {
     public AutoService saveAutoService(AutoService autoservice);
 
 
+    List<AutoService> getAllAutoServices();
 }
