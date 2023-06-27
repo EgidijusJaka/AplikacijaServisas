@@ -2,13 +2,13 @@ package com.autoservice.autoservice.controller;
 
 import com.autoservice.autoservice.model.AutoService;
 import com.autoservice.autoservice.service.AutoServiceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
-
+@RestController
 public class AutoServiceController {
-
+    @Autowired
     AutoServiceService service;
     @GetMapping("/getautoservice")
     public List<AutoService> getAllAutoService(){
@@ -34,6 +34,6 @@ public class AutoServiceController {
         service.deleteAutoService(id);
         return "Has been delete";
     }
-  
+
 
 }
